@@ -3,7 +3,6 @@ package com.example.demo.jwt;
 import com.example.demo.domain.UserResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import jdk.nashorn.internal.parser.Token;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Component;
@@ -24,7 +23,6 @@ public class JwtComponent {
         String bearerToken = Jwts.builder()
             .setId(userId)
             .setSubject(userId)
-                .setPayload("")
             .claim("authorities", grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
             .setIssuedAt(now)
             .setExpiration(expiration)
